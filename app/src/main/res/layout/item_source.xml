@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-
     android:orientation="vertical"
     app:cardBackgroundColor="#B1B1B1"
     app:cardCornerRadius="20dp">
@@ -15,44 +14,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/img_news"
+        <TextView
+            android:id="@+id/name"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="name"
+            android:textSize="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@color/cardview_dark_background" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_title_news"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ellipsize="end"
-            android:maxLines="3"
-            android:textColor="@color/black_gray"
-            android:textSize="22sp"
-            app:layout_constraintEnd_toEndOf="@+id/img_news"
-            app:layout_constraintStart_toStartOf="@+id/img_news"
-            app:layout_constraintTop_toBottomOf="@+id/img_news"
-            tools:text="Title" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_content_news"
+        <TextView
+            android:id="@+id/description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:maxLines="3"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_title_news"
-            app:layout_constraintStart_toStartOf="@+id/tv_title_news"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_news"
-            tools:text="@tools:sample/lorem/random" />
+            app:layout_constraintEnd_toEndOf="@id/name"
+            app:layout_constraintStart_toStartOf="@id/name"
+            app:layout_constraintTop_toBottomOf="@id/name"
+            tools:text="@tools:sample/lorem/random"
+
+            />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_date_news"
@@ -63,9 +49,10 @@
             android:textColor="@color/black_gray"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/tv_content_news"
-            app:layout_constraintTop_toBottomOf="@+id/tv_content_news"
+            app:layout_constraintEnd_toEndOf="@id/description"
+            app:layout_constraintTop_toBottomOf="@id/description"
             tools:text="20:00" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

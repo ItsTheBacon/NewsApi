@@ -1,7 +1,6 @@
 package com.example.newsapp.utils
 
 import android.annotation.SuppressLint
-import android.icu.util.ULocale.getCountry
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -21,7 +20,11 @@ fun dateFormat(oldStringDate: String?): String? {
     }
     return newDate
 }
+
 private fun getCountry(): String =
     Locale.getDefault().country.lowercase(Locale.ROOT)
+
+
+
 
 

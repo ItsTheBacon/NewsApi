@@ -10,6 +10,9 @@ data class NewsResponse<T>(
     val totalResults: Int,
 
     @SerializedName("articles")
-    val articles: List<T>
+    val articles: List<T>,
+
+    @SerializedName("sources")
+    val sources: List<T>
 
 )

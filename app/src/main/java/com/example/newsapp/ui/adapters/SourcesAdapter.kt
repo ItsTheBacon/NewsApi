@@ -3,48 +3,33 @@ package com.example.newsapp.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.example.newsapp.databinding.ItemEverythingBinding
-import com.example.newsapp.models.Everything
+import com.example.newsapp.base.BaseDiffUtilCallback
+import com.example.newsapp.databinding.ItemSourceBinding
 import com.example.newsapp.models.Source
-import com.example.newsapp.utils.dateFormat
 
-//class SourcesAdapter : PagingDataAdapter<Everything, SourcesAdapter.NewsViewHolder>(DiffCallback) {
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-//        return NewsViewHolder(ItemEverythingBinding.inflate(LayoutInflater.from(parent.context)))
-//    }
-//
-//    override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-//        val data = getItem(position)
-//        holder.onBind(data)
-//    }
-//
-//    class NewsViewHolder(private var binding: ItemEverythingBinding) : RecyclerView.ViewHolder(binding.root) {
-//        fun onBind(data: Everything?) {
-//            with(binding) {
-//                Glide.with(itemView.context)
-//                    .load(data?.urlToImage)
-//                    .centerCrop()
-//                    .into(imgNews)
-//                tvTitleNews.text = data?.title
-//                tvDateNews.text = "${dateFormat(data?.publishedAt)}"
-//                tvContentNews.text = data?.content
-//            }
-//        }
-//    }
-//
-//    companion object DiffCallback : DiffUtil.ItemCallback<Everything>() {
-//        override fun areItemsTheSame(oldItem: Everything, newItem: Everything): Boolean {
-//            return oldItem == newItem
-//        }
-//        override fun areContentsTheSame(oldItem: Everything, newItem: Everything): Boolean {
-//            return oldItem.source.id== newItem.source.id
-//
-//        }
-//    }
-//
-//
-//}
+class SourcesAdapter :
+    PagingDataAdapter<Source, SourcesAdapter.ViewHolder>(BaseDiffUtilCallback<Source>()) {
+    private lateinit var binding: ItemSourceBinding
+
+    inner class ViewHolder(private val binding: ItemSourceBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun onBind(data: Source) {
+            with(binding) {
+                name.text = data.name
+                tvDateNews.text = data.category
+                description.text = data.description
+            }
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        binding = ItemSourceBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        getItem(position)?.let { holder.onBind(it) }
+    }
+}

@@ -3,7 +3,6 @@ package com.example.newsapp.data.network
 import com.example.newsapp.constants.Constants.BASE_URL
 import com.example.newsapp.data.network.apiservices.EverythingApiService
 import com.example.newsapp.data.network.apiservices.TopHeadLinesApiService
-import com.example.newsapp.data.network.interceptors.AuthorizationInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -12,7 +11,7 @@ import java.util.concurrent.TimeUnit
 
 class RetrofitClient {
 
-    private val okHttpClient : OkHttpClient = OkHttpClient()
+    private val okHttpClient: OkHttpClient = OkHttpClient()
         .newBuilder()
         .addInterceptor(provideLoggingInterceptor())
 //        .addInterceptor(AuthorizationInterceptor())
@@ -22,13 +21,13 @@ class RetrofitClient {
         .build()
 
 
-    private fun provideLoggingInterceptor() : HttpLoggingInterceptor{
+    private fun provideLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
     }
 
-    private val provideRetrofit  = Retrofit.Builder()
+    private val provideRetrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
@@ -37,7 +36,8 @@ class RetrofitClient {
     fun provideEveryThingApiService(): EverythingApiService = provideRetrofit.create(
         EverythingApiService::class.java
     )
-    fun provideTopHeadLinesApiSerVice() : TopHeadLinesApiService = provideRetrofit.create(
+
+    fun provideTopHeadLinesApiSerVice(): TopHeadLinesApiService = provideRetrofit.create(
         TopHeadLinesApiService::class.java
     )
 }

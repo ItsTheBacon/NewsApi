@@ -5,10 +5,9 @@ import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import by.kirich1409.viewbindingdelegate.ViewBindingProperty
 
 
-abstract class BaseFragment< V : BaseViewModel,B : ViewBinding >(
+abstract class BaseFragment<V : BaseViewModel, B : ViewBinding>(
     @LayoutRes layoutId: Int
 ) : Fragment(layoutId) {
 
@@ -25,7 +24,7 @@ abstract class BaseFragment< V : BaseViewModel,B : ViewBinding >(
         setupViews()
     }
 
-    open fun setupArgs(){
+    open fun setupArgs() {
 
     }
 

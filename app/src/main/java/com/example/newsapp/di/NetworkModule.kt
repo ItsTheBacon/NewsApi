@@ -21,9 +21,10 @@ object NetworkModule {
     fun fetchEveryThingApiService(): EverythingApiService {
         return retrofit.provideEveryThingApiService()
     }
+
     @Singleton
     @Provides
-    fun fetchTopHeadLines() : TopHeadLinesApiService{
+    fun fetchTopHeadLines(): TopHeadLinesApiService {
         return retrofit.provideTopHeadLinesApiSerVice()
     }
 }

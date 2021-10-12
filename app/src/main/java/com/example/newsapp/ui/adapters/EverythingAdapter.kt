@@ -10,13 +10,14 @@ import com.example.newsapp.databinding.ItemEverythingBinding
 import com.example.newsapp.models.Everything
 import com.example.newsapp.utils.dateFormat
 
-class TopHeadLinesAdapter :
-    PagingDataAdapter<Everything, TopHeadLinesAdapter.ViewHolder>(BaseDiffUtilCallback<Everything>()) {
+class EverythingAdapter : PagingDataAdapter<Everything, EverythingAdapter.ViewHolder>(
+    BaseDiffUtilCallback<Everything>()
+) {
     private lateinit var binding: ItemEverythingBinding
 
-
-    inner class ViewHolder(private val binding: ItemEverythingBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(
+        private val binding: ItemEverythingBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun onBind(data: Everything) {
             with(binding) {
@@ -31,14 +32,13 @@ class TopHeadLinesAdapter :
         }
     }
 
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        getItem(position)?.let { holder.onBind(it) }
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         binding = ItemEverythingBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        getItem(position)?.let { holder.onBind(it) }
-    }
 }
-
-

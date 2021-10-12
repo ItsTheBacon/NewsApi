@@ -6,34 +6,34 @@ data class Everything(
     @SerializedName("source")
     val source: Source,
     @SerializedName("author")
-    val author :String,
+    val author: String,
     @SerializedName("title")
-    val title : String,
+    val title: String,
     @SerializedName("description")
-    val description : String,
+    val description: String,
     @SerializedName("url")
-    val url :String,
+    val url: String,
     @SerializedName("urlToImage")
-    val urlToImage : String,
+    val urlToImage: String,
     @SerializedName("publishedAt")
-    val publishedAt :String,
+    val publishedAt: String,
     @SerializedName("content")
-    val content : String
+    val content: String
 )
 
 data class Source(
     @SerializedName("id")
-     val id : String,
+    val id: String,
     @SerializedName("name")
-    val name : String,
+    val name: String,
     @SerializedName("description")
-    val description : String,
+    val description: String,
     @SerializedName("url")
-    val url : String,
+    val url: String,
     @SerializedName("category")
-    val category : String,
+    val category: String,
     @SerializedName("language")
-    val language :String,
+    val language: String,
     @SerializedName("country")
-    val country : String
+    val country: String
 )

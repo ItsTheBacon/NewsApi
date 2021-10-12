@@ -1,15 +1,24 @@
 package com.example.newsapp.data.repositories
 
-import com.example.newsapp.base.BaseRepository
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.example.newsapp.data.network.apiservices.EverythingApiService
+import com.example.newsapp.data.pagingsource.EverythingPagingSource
+import com.example.newsapp.models.Everything
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class EverythingRepository @Inject constructor(
     private val service: EverythingApiService
-) :
-    BaseRepository() {
+) {
 
-        fun fetchEverything(query : String  = "bitcoin") = doRequest{
-            service.fetchEverything(query)
-        }
+    fun fetchEverything(): Flow<PagingData<Everything>> {
+        return Pager(config =
+        PagingConfig(pageSize = 20, enablePlaceholders = false),
+            pagingSourceFactory = {
+                EverythingPagingSource(service)
+            }
+        ).flow
+    }
 }

@@ -1,13 +1,15 @@
 package com.example.newsapp.ui.fragments.topheadline
 
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsapp.R
 import com.example.newsapp.base.BaseFragment
 import com.example.newsapp.databinding.FragmentTopHeadLinesBinding
-import com.example.newsapp.models.Everything
 import com.example.newsapp.ui.adapters.TopHeadLinesAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class TopHeadLinesFragment :
@@ -18,15 +20,14 @@ class TopHeadLinesFragment :
 
     override fun initialize() {
         binding.rvTask.adapter = adapter
-
-        viewModel.fetchTopHeadLines()
-
     }
 
     override fun setupObserve() {
-        viewModel.topHeadLines.observe(viewLifecycleOwner, {
-            adapter.submitList(it)
-        })
+        lifecycleScope.launch {
+            viewModel.fetchTopHeadLines().collectLatest {
+                adapter.submitData(it)
+            }
+        }
     }
 
 }
