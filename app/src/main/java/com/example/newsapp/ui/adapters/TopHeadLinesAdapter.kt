@@ -1,10 +1,16 @@
 package com.example.newsapp.ui.adapters
 
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.example.newsapp.base.BaseDiffUtilCallback
 import com.example.newsapp.databinding.ItemEverythingBinding
 import com.example.newsapp.models.Everything
@@ -20,10 +26,33 @@ class TopHeadLinesAdapter :
 
         fun onBind(data: Everything) {
             with(binding) {
-                Glide.with(itemView.context)
+                Glide.with(imgNews)
                     .load(data.urlToImage)
-                    .centerCrop()
+                    .listener(object : RequestListener<Drawable?> {
+                        override fun onResourceReady(
+                            resource: Drawable?,
+                            model: Any?,
+                            target: Target<Drawable?>?,
+                            dataSource: com.bumptech.glide.load.DataSource?,
+                            isFirstResource: Boolean
+                        ): Boolean {
+                            itemProgressBar.visibility = View.GONE
+                            return false
+                        }
+
+                        override fun onLoadFailed(
+                            e: GlideException?,
+                            model: Any?,
+                            target: Target<Drawable?>?,
+                            isFirstResource: Boolean
+                        ): Boolean {
+                            itemProgressBar.visibility = View.GONE
+                            return false
+                        }
+                    })
+                    .transition(DrawableTransitionOptions.withCrossFade())
                     .into(imgNews)
+
                 tvTitleNews.text = data.title
                 tvDateNews.text = "${dateFormat(data.publishedAt)}"
                 tvContentNews.text = data.content

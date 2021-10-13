@@ -17,12 +17,9 @@ class SourcesFragment :
     override val binding by viewBinding(FragmentSourcesBinding::bind)
     override val viewModel: SourcesViewModel by viewModels()
     private val adapter: SourcesAdapter = SourcesAdapter()
-
-
     override fun initialize() {
         binding.rvTask.adapter = adapter
     }
-
     override fun setupObserve() {
         lifecycleScope.launch {
             viewModel.fetchSource().collectLatest {

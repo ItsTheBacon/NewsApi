@@ -10,6 +10,7 @@ import java.io.IOException
 
 class EverythingPagingSource(private val service: EverythingApiService) :
     PagingSource<Int, Everything>() {
+
     override fun getRefreshKey(state: PagingState<Int, Everything>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)

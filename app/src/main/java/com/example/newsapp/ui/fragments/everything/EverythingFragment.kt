@@ -17,8 +17,6 @@ class EverythingFragment :
     override val binding by viewBinding(FragmentEverythingBinding::bind)
     override val viewModel: EveryThingViewModel by viewModels()
     private val adapter: EverythingAdapter = EverythingAdapter()
-
-
     override fun initialize() {
         binding.rvTask.adapter = adapter
     }
@@ -30,6 +28,5 @@ class EverythingFragment :
             }
         }
     }
-
 }
 

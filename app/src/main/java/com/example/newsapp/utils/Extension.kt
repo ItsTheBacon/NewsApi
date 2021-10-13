@@ -5,6 +5,7 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 @SuppressLint("SimpleDateFormat", "NewApi")
 fun dateFormat(oldStringDate: String?): String? {
     if (oldStringDate == null || oldStringDate == "")
@@ -23,7 +24,6 @@ fun dateFormat(oldStringDate: String?): String? {
 
 private fun getCountry(): String =
     Locale.getDefault().country.lowercase(Locale.ROOT)
-
 
 
 
