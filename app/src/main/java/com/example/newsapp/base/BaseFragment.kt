@@ -26,7 +26,6 @@ abstract class BaseFragment<V : BaseViewModel, B : ViewBinding>(
     }
     open fun setupObserve() {
     }
-
     open fun setupRequests() {
     }
 
