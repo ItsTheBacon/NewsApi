@@ -20,6 +20,7 @@ class SourcesFragment :
     override fun initialize() {
         binding.rvTask.adapter = adapter
     }
+
     override fun setupObserve() {
         lifecycleScope.launch {
             viewModel.fetchSource().collectLatest {

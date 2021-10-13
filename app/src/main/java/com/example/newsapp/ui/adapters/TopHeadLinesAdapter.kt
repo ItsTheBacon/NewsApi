@@ -19,6 +19,7 @@ import com.example.newsapp.utils.dateFormat
 class TopHeadLinesAdapter :
     PagingDataAdapter<Everything, TopHeadLinesAdapter.ViewHolder>(BaseDiffUtilCallback<Everything>()) {
     private lateinit var binding: ItemEverythingBinding
+
     inner class ViewHolder(private val binding: ItemEverythingBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: Everything) {

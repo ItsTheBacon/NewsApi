@@ -28,10 +28,12 @@ class EverythingPagingSource(private val service: EverythingApiService) :
                 prevKey = null,
                 nextKey = nextPage
             )
-        } catch (e: IOException) {
-            LoadResult.Error(e)
         } catch (http: HttpException) {
             LoadResult.Error(http)
+        } catch (e: IOException) {
+            LoadResult.Error(e)
+        } catch (exception: Exception) {
+            LoadResult.Error(exception)
         }
     }
 

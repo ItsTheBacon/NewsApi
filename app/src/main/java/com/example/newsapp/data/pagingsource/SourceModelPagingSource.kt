@@ -26,9 +26,11 @@ class SourceModelPagingSource(private val service: TopHeadLinesApiService) :
                 prevKey = null, // Only paging forward.
                 nextKey = nextPage
             )
+        } catch (e: HttpException) {
+            LoadResult.Error(e)
         } catch (e: IOException) {
             LoadResult.Error(e)
-        } catch (e: HttpException) {
+        } catch (e: Exception) {
             LoadResult.Error(e)
         }
     }
