@@ -23,7 +23,6 @@ class TopHeadLinesAdapter :
 
     inner class ViewHolder(private val binding: ItemEverythingBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
         fun onBind(data: Everything) {
             with(binding) {
                 Glide.with(imgNews)
