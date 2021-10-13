@@ -13,7 +13,6 @@ abstract class BaseFragment<V : BaseViewModel, B : ViewBinding>(
 
     protected abstract val binding: B
     protected abstract val viewModel: V
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initialize()
