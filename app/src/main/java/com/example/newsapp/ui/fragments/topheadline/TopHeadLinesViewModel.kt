@@ -8,8 +8,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class TopHeadLinesViewModel @Inject constructor(private val repository: TopHeadLinesRepository) :
-    BaseViewModel() {
-
+class TopHeadLinesViewModel @Inject constructor(
+    private val repository: TopHeadLinesRepository
+) : BaseViewModel() {
     fun fetchTopHeadLines() = repository.fetchTopHeadLines().cachedIn(viewModelScope)
 }

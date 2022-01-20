@@ -8,7 +8,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class EveryThingViewModel @Inject constructor(private val repository: EverythingRepository) :
-    BaseViewModel() {
+class EveryThingViewModel @Inject constructor(
+    private val repository: EverythingRepository
+) : BaseViewModel() {
     fun fetchEverything() = repository.fetchEverything().cachedIn(viewModelScope)
 }
