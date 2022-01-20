@@ -25,7 +25,9 @@ class SourcesFragment :
 
     override fun setupViews() {
         adapter.addLoadStateListener {
-            binding.progressBarEverything.isVisible = it.refresh is LoadState.Loading
+            if (view != null) {
+                binding.progressBarEverything.isVisible = it.refresh is LoadState.Loading
+            }
         }
     }
 
